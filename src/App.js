@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { withRouter } from 'react-router-dom';
+import Header from './containers/Header';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    currentUser: localStorage.getItem('uid')
+  }
+
+  setCurrentUser = token => {
+    this.setState({ currentUser: token });
+    localStorage.setItem('uid', token);
+    console.log('user token:', token);
+  }
+
+  logout = () => {
+    localStorage.removeItem('uid');
+    this.setState({ currentUser: null });
+    this.props.history.push('/');
+  }
+
+  render() {
+    return (
+      <div className='app'>
+        <Header
+          currentUser={this.state.currentUser}
+          logout={this.logout} />
+        <main>
+          blah blah blah
+        </main>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default withRouter(App);
