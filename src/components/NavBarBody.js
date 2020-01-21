@@ -15,6 +15,10 @@ class NavBarBody extends React.Component {
 		this.props.history.push('/profile');
 	}
 
+	cart = () => {
+		this.props.history.push('/cart');
+	}
+
 	home = () => {
 		this.props.push('/');
 	}
@@ -41,6 +45,7 @@ class NavBarBody extends React.Component {
 				</div>
 				<div style={{'flexGrow': 1}} />
 				{authButtons}
+				<Button text='Cart' onClick={this.cart} />
 			</div>
 		);
 	}

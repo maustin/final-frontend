@@ -5,7 +5,8 @@ import Body from './containers/Body';
 
 class App extends React.Component {
   state = {
-    currentUser: localStorage.getItem('hgss-uid')
+    currentUser: localStorage.getItem('hgss-uid'),
+    //cart: localStorage.getItem('hgss-cart'),
   }
 
   setCurrentUser = token => {
