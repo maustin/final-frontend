@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import OctoButton from '../components/OctoButton';
 import InventoryListItem from '../components/InventoryListItem';
 import InventoryItem from '../models/InventoryItem';
+import Filters from '../components/Filters';
 
 class BrowsePage extends React.Component {
 	state = {
@@ -13,10 +14,17 @@ class BrowsePage extends React.Component {
 		showNew: null,
 	}
 
-	classFilters = [
-		"Transport", "Starfighter", "Corvette", "Cruiser", "Battlestation",
-		"Barge", "Escort", "Freighter", "Destroyer", "Dreadnought", "Yacht"
-	]
+	setSelectedClassFilters = selectedFilters => {
+		this.setState({ selectedFilters });
+	}
+
+	setNewUsedFlags = (showNew, showUsed) => {
+		this.setState({ showNew, showUsed });
+	}
+
+	setSortMethod = sortMethod => {
+		this.setState({ sortMethod });
+	}
 
 	componentDidMount() {
 		InventoryItem.all()
@@ -26,13 +34,15 @@ class BrowsePage extends React.Component {
 	}
 
 	render() {
-		let ships;
-		//let ships = this.state.ships.map(ship =>
-			//<ShipInventoryItem)
+		let ships = this.state.ships.map(ship =>
+			<InventoryListItem ship={ship} />);
+
 		return (
 			<div className='browse-page'>
-				<div className='browse-page-filters'>
-				</div>
+				<Filters
+					setSelectedClassFilters={this.setSelectedClassFilters}
+					setNewUsedFlags={this.setNewUsedFlags}
+					setSortMethod={this.setSortMethod} />
 				<div className='browse-page-items'>
 					{ ships }
 				</div>
