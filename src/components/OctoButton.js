@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Button extends React.Component {
+class OctoButton extends React.Component {
 	onClick = event => {
 		if (this.props.onClick)
 			this.props.onClick(event);
@@ -8,14 +8,19 @@ class Button extends React.Component {
 
 	render() {
 		// style stuff
+		let classNames = ['button-octagon'];
 		let style = {
 			//border: "4px solid white",
 			//borderImage: 'url(octagon-outline-shape-edit.svg) 20% stretch',
 		};
 
+		if (this.props.smaller) {
+			classNames.push('button-octagon-smaller');
+		}
+
 		return (
 			<div
-				className='button-base'
+				className={classNames.join(' ')}
 				style={style}
 				onClick={this.onClick} >
 				{ this.props.text }
@@ -24,4 +29,4 @@ class Button extends React.Component {
 	}
 }
 
-export default Button;
+export default OctoButton;

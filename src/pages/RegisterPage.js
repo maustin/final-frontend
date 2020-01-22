@@ -25,7 +25,7 @@ class RegisterPage extends React.Component {
 			homeworld: this.state.homeworld,
 		};
 
-		fetch(`${API_URL}/v1/auth/register`, {
+		fetch(`${API_URL}/auth/register`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

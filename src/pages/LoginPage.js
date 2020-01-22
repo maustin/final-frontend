@@ -18,7 +18,7 @@ class LoginPage extends React.Component {
 			password: this.state.password
 		};
 
-		fetch(`${API_URL}/v1/auth/login`, {
+		fetch(`${API_URL}/auth/login`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

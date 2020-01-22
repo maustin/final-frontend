@@ -20,7 +20,7 @@ class NavBarBody extends React.Component {
 	}
 
 	home = () => {
-		this.props.push('/');
+		this.props.history.push('/');
 	}
 
 	render() {
@@ -34,15 +34,14 @@ class NavBarBody extends React.Component {
 		else {
 			authButtons.push(
 				<Button text='Sign In' onClick={this.login} />,
-				<Button text='Register' onClick={this.register} />
+				//<Button text='Register' onClick={this.register} />
 			);
 		}
 
 		return (
 			<div className='navbar-body'>
-				<div className='navbar-body-title'>
-					"Honest" Gar's Starship Surplus
-				</div>
+				<Button text='Home' onClick={this.home} />
+				<Button text='Browse' onClick={this.browse} />
 				<div style={{'flexGrow': 1}} />
 				{authButtons}
 				<Button text='Cart' onClick={this.cart} />
