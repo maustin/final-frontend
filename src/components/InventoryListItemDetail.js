@@ -1,6 +1,6 @@
 import React from 'react';
 
-class InventoryLineItemDetailItem extends React.Component {
+class InventoryListItemDetail extends React.Component {
 	// I feel like this is cheating. Consider putting this in a util.
 	columnNameMap = {
 		"starship_class": "Starship Class",
@@ -21,4 +21,4 @@ class InventoryLineItemDetailItem extends React.Component {
 	}
 }
 
-export default InventoryLineItemDetailItem;
+export default InventoryListItemDetail;

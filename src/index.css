@@ -1,9 +1,13 @@
+:root {
+	--base-color: #D9FFFF;
+}
+
 body {
 	font-family: 'Play', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #000000;
-  color: #D9FFFF;
+  color: var(--base-color);
   margin: 0 auto;
   box-sizing: border-box;
   height: 1vh;
@@ -29,13 +33,13 @@ header {
 .navbar-body {
 	display: flex;
 	background: rgba(30, 30, 30, 1);
-	border-bottom: 2px solid #D9FFFF;
+	border-bottom: 2px solid var(--base-color);
 }
 
 .button-base {
 	background: #000000;
 	font-size: 20px;
-	border: 2px solid #D9FFFF;
+	border: 2px solid var(--base-color);
 	display: inline-block;
 	cursor: pointer;
 	margin: 10px;
@@ -49,7 +53,7 @@ header {
 	cursor: pointer;
 	margin: 10px;
 	padding: 5px 10px 5px 10px;
-	border: 10px solid #D9FFFF;
+	border: 10px solid var(--base-color);
 	border-image: url(/octagon-outline-shape-edit.svg) 20% stretch;
 }
 
@@ -66,7 +70,7 @@ header {
 }
 
 .home-logo-container {
-	border: 2px solid #D9FFFF;
+	border: 2px solid var(--base-color);
 	border-radius: 5px;
 	display: flex;
 }
@@ -93,7 +97,7 @@ header {
 .home-logo-text-divider {
 	width: 90%;
 	height: 2px;
-	background: #D9FFFF;
+	background: var(--base-color);
 }
 
 .home-page h3 {
@@ -107,8 +111,8 @@ header {
 
 .home-dotd-header {
 	width: 100%;
-	border-top: 2px solid #D9FFFF;
-	border-bottom: 2px solid #D9FFFF;
+	border-top: 2px solid var(--base-color);
+	border-bottom: 2px solid var(--base-color);
 	font-size: 30px;
 	padding: 10px 0 10px 0;
 	margin-bottom: 30px;
@@ -165,7 +169,7 @@ header {
 
 .inventory-line-item-detail {
 	font-size: 12px;
-	border-bottom: 1px solid #D9FFFF;
+	border-bottom: 1px solid var(--base-color);
 	display: flex;
 	width: 100%;
 	margin-top: 5px;

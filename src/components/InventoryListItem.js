@@ -1,9 +1,9 @@
 import React from 'react';
 import {formatCredits} from '../utils/TextUtils';
 import OctoButton from './OctoButton';
-import InventoryLineItemDetailItem from './InventoryLineItemDetailItem';
+import InventoryListItemDetail from './InventoryListItemDetail';
 
-class InventoryLineItem extends React.Component {
+class InventoryListItem extends React.Component {
 	// Two styles - DOTD and BROWSE
 	addToCart = event => {
 
@@ -53,14 +53,14 @@ class InventoryLineItem extends React.Component {
 				</div>
 				<div className='inventory-line-item-details'>
 					<span className='inventory-line-item-details-header'>{ship.model}</span>
-					<InventoryLineItemDetailItem ship={this.props.ship} shipKey='starship_class' />
-					<InventoryLineItemDetailItem ship={this.props.ship} shipKey={lengthOrParsecs} />
-					<InventoryLineItemDetailItem ship={this.props.ship} shipKey='hyperdrive_rating' />
-					<InventoryLineItemDetailItem ship={this.props.ship} shipKey='MGLT' />
+					<InventoryListItemDetail ship={this.props.ship} shipKey='starship_class' />
+					<InventoryListItemDetail ship={this.props.ship} shipKey={lengthOrParsecs} />
+					<InventoryListItemDetail ship={this.props.ship} shipKey='hyperdrive_rating' />
+					<InventoryListItemDetail ship={this.props.ship} shipKey='MGLT' />
 				</div>
 			</div>
 		);
 	}
 }
 
-export default InventoryLineItem;
+export default InventoryListItem;

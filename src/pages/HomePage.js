@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import OctoButton from '../components/OctoButton';
-import InventoryLineItem from '../components/InventoryLineItem';
+import InventoryListItem from '../components/InventoryListItem';
 import InventoryItem from '../models/InventoryItem';
 
 const PROMO_DOTD = 1;// 'Deal of the day' is promo id 1
@@ -50,7 +50,7 @@ class HomePage extends React.Component {
 				<div className='home-dotd-header'>
 					GAR'S DEAL OF THE DAY
 				</div>
-				<InventoryLineItem ship={this.state.dotd} dotd={true} />
+				<InventoryListItem ship={this.state.dotd} dotd />
 			</div>
 		);
 	}

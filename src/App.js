@@ -25,6 +25,10 @@ class App extends React.Component {
     this.props.history.push('/');
   }
 
+  // componentDidMount() {
+  //   document.documentElement.style.setProperty('--base-color', 'red');
+  // }
+
   render() {
     console.log("I have uid:", this.state.currentUser);
     return (
