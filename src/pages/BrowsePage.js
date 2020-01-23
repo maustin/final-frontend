@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import OctoButton from '../components/OctoButton';
 import InventoryListItem from '../components/InventoryListItem';
 import InventoryItem from '../models/InventoryItem';
-import Filters from '../components/Filters';
+import Filters from '../components/Filters'
 
 class BrowsePage extends React.Component {
 	state = {
@@ -25,6 +25,11 @@ class BrowsePage extends React.Component {
 	setSortMethod = sortMethod => {
 		this.setState({ sortMethod });
 	}
+
+	/*addToCart = (id, quantity) => {
+		Cart.addItem(id, quantity);
+		this.props.history.push('/cart');
+	}*/
 
 	componentDidMount() {
 		InventoryItem.all()
@@ -51,7 +56,10 @@ class BrowsePage extends React.Component {
 			});
 
 		ships = ships.map(ship =>
-			<InventoryListItem ship={ship} key={ship.id} style='browse' />);
+			<InventoryListItem
+				ship={ship}
+				key={ship.id}
+				style='browse'/>);
 
 		return (
 			<div className='browse-page'>

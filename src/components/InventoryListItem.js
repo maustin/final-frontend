@@ -1,17 +1,25 @@
 import React from 'react';
-import {formatCredits} from '../utils/TextUtils';
+import { withRouter } from 'react-router-dom';
+import { formatCredits } from '../utils/TextUtils';
 import InventoryItem from '../models/InventoryItem';
 import OctoButton from './OctoButton';
 import InventoryListItemDetail from './InventoryListItemDetail';
+import Cart from '../models/Cart';
 
 class InventoryListItem extends React.Component {
 	state = {
 		ship: null
 	}
+
 	// Three possible styles
 	// dotd, browse, cart
-	addToCart = event => {
 
+	addToCart = event => {
+		let ship = this.props.ship || this.state.ship;
+		//console.log(this.state.ship);
+		//this.props.addToCart(ship, 1);
+		Cart.addItem(ship, 1);
+		this.props.history.push('/cart');
 	};
 
 	componentDidMount() {
@@ -21,6 +29,8 @@ class InventoryListItem extends React.Component {
 		}
 	}
 
+	// TODO: Fix this hacky awful 'I need to get it done'
+	// way of tracking prices I'm about to do.
 	render() {
 		if (!this.props.ship && !this.state.ship)
 			return <div/>;
@@ -36,11 +46,13 @@ class InventoryListItem extends React.Component {
 			if (style != 'cart')
 				costsDiv.push(<div className='inventory-line-item-cost-old'>{formatCredits(ship.price)}</div>);
 
-			costsDiv.push(<div className='inventory-line-item-cost-current'>{formatCredits(ship.price * ship.price_mod)}</div>);
+			costsDiv.push(<div className='inventory-line-item-cost-current'>{formatCredits(Math.floor(ship.price * ship.price_mod))}</div>);
+			ship.finalPrice = Math.floor(ship.price * ship.price_mod);
 		}
 		else {
 			// No change
 			costsDiv = [<div className='inventory-line-item-cost-current'>{formatCredits(ship.price)}</div>];
+			ship.finalPrice = ship.price;
 		}
 
 		if (style != 'cart')
@@ -52,7 +64,7 @@ class InventoryListItem extends React.Component {
 
 		let costContainerClassName = ['inventory-line-item-cost-container'];
 		if (style == 'cart')
-			costContainerClassName.push('shift-flex-right');
+			costContainerClassName.push('shift-flex-right', 'text-align-bottom');
 
 		return (
 			<div className={className.join(' ')} >
@@ -72,4 +84,4 @@ class InventoryListItem extends React.Component {
 	}
 }
 
-export default InventoryListItem;
+export default withRouter(InventoryListItem);

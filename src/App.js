@@ -31,15 +31,17 @@ class App extends React.Component {
   // componentDidMount() {
   //   document.documentElement.style.setProperty('--base-color', 'red');
   // }
-  componentDidMount() {
+  /*componentDidMount() {
     //this.colorManager.setLight();
-  }
+  }*/
 
   render() {
     console.log("I have uid:", this.state.currentUser);
     return (
       <div className='app'>
         <Header
+          setDark={this.colorManager.setDark}
+          setLight={this.colorManager.setLight}
           currentUser={this.state.currentUser}
           logout={this.logout} />
         <Body

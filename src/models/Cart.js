@@ -1,6 +1,10 @@
+// inventory id, qty, price?
+
 class Cart {
 	constructor() {
+		//this.items = {};
 		this.items = [];
+		return;
 
 		let storedCart = localStorage.getItem('hgss-cart');
 		if (storedCart) {
@@ -9,29 +13,65 @@ class Cart {
 		}
 	}
 
-	getItems() {
+	getItems = () => {
 		return this.items;
 	}
 
-	addItem(item) {
+	addItem = (ship, quantity) => {
+		// verify string key
+		this.items.push({ship, quantity});
+
+		/*id = id.toString();
+		if (!this.items.hasOwnProperty(id.toString()))
+			this.items[id] = quantity;
+		else
+			this.items[id] += quantity;*/
+
 		this.saveState();
 	}
 
-	getItemQuantity(item) {
-
+	getItemQuantity = (id) => {
+		/*id = id.toString();
+		if (id.items.hasOwnProperty(id))
+			return this.items[id];
+		else
+			return 0;*/
 	}
 
-	setItemQuantity(item) {
+	// Just an alias really
+	setItemQuantity = (id, quantity) => {
+		/*id = id.toString();
+		if (quantity == 0 && this.items.hasOwnProperty(id)) {
+			delete this.items[id];
+			this.saveState();
+		}
+		else
+			this.addItem(id, quantity);*/
+	}
+
+	removeItem = (id) => {
+		for (let i = 0; i < this.items.length; i++) {
+			if (this.items[i].id == id) {
+				this.items.splice(i, 1);
+				break;
+			}
+		}
+
 		this.saveState();
+		/*for (let item of this.items) {
+			if (item.ship.id == id) {
+				this.items.
+			}
+		}*/
 	}
 
-	clear() {
+	clear = () => {
 		this.items = [];
 		this.saveState();
 	}
 
-	saveSate() {
-		
+	saveState = () => {
+		localStorage.setItem('hgss-cart', this.items);
 	}
 }
 

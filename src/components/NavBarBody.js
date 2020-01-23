@@ -44,11 +44,13 @@ class NavBarBody extends React.Component {
 
 		return (
 			<div className='navbar-body'>
+				<div className='hidden-button' onClick={this.props.setDark} />
 				<Button text='Home' onClick={this.home} />
 				<Button text='Browse' onClick={this.browse} />
 				<div style={{'flexGrow': 1}} />
 				{authButtons}
 				<Button text='Cart' onClick={this.cart} />
+				<div className='hidden-button' onClick={this.props.setLight} />
 			</div>
 		);
 	}
