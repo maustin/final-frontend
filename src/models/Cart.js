@@ -50,8 +50,10 @@ class Cart {
 	}
 
 	removeItem = (id) => {
+		console.log()
 		for (let i = 0; i < this.items.length; i++) {
-			if (this.items[i].id == id) {
+			//console.log(this.items[i].id);
+			if (this.items[i].ship.id == id) {
 				this.items.splice(i, 1);
 				break;
 			}

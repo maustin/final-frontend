@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Cart from '../models/Cart';
+import { formatCredits } from '../utils/TextUtils';
 import Button from '../components/Button';
 import OctoButton from '../components/OctoButton';
 import InventoryListItem from '../components/InventoryListItem';
@@ -14,8 +15,14 @@ class CartPage extends React.Component {
 		this.props.history.push('/browse');
 	}
 
-	removeItem = param => {
-		console.log(param);
+	removeItem = id => {
+		console.log(id);
+		Cart.removeItem(id);
+		this.setState({ items: Cart.getItems() });
+	}
+
+	checkout = () => {
+
 	}
 
 	componentDidMount() {
@@ -38,6 +45,12 @@ class CartPage extends React.Component {
 				</div>
 			)});
 
+		let taxes = subtotal * 0.2;
+		let regFee = 3590;
+		let galFee = subtotal * 0.01;
+		let conFee = subtotal * 0.005;
+		let total = subtotal + taxes + regFee + galFee + conFee;
+
 		if (!rows.length) {
 			return (
 				<div className='cart-page'>
@@ -55,8 +68,20 @@ class CartPage extends React.Component {
 				<h3>MY CART</h3>
 				{ rows }
 				<div className='cart-totals'>
-					<span>{ subtotal }</span>
+					<div className='cart-subtotal-header'>Subtotal</div>
+					<div className='cart-subtotal-value'>{ formatCredits(subtotal) }</div>
+					<div className='cart-subtotal-header'>Taxes</div>
+					<div className='cart-subtotal-value'>{ formatCredits(taxes) }</div>
+					<div className='cart-subtotal-header'>Registration</div>
+					<div className='cart-subtotal-value'>{ formatCredits(regFee) }</div>
+					<div className='cart-subtotal-header'>Galactic Recovery Fund</div>
+					<div className='cart-subtotal-value'>{ formatCredits(galFee) }</div>
+					<div className='cart-subtotal-header'>Convenience Fee</div>
+					<div className='cart-subtotal-value'>{ formatCredits(conFee) }</div>
+					<div className='cart-total-header'>TOTAL</div>
+					<div className='cart-total-value'>{ formatCredits(total) }</div>
 				</div>
+				<OctoButton text="CHECKOUT" onClick={this.checkout} />
 			</div>
 		);
 	}

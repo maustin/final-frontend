@@ -105,6 +105,31 @@ header {
 .cart-totals {
 	border-top: 2px solid var(--receding-color);
 	text-align: right;
+	padding-top: 10px;
+}
+
+.cart-subtotal-header {
+	font-size: 16px;
+	color: var(--base-color);
+	margin-bottom: -5px;
+}
+
+.cart-subtotal-value {
+	font-size: 20px;
+	color: var(--text-header-color);
+	margin-bottom: 5px;
+}
+
+.cart-total-header {
+	border-top: 2px solid var(--receding-color);
+	font-size: 20px;
+	color: var(--text-color);
+	padding-top: 10px;
+}
+
+.cart-total-value {
+	font-size: 24px;
+	color: var(--text-header-color);
 }
 
 .hidden-button {

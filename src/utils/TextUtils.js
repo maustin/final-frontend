@@ -4,7 +4,7 @@ function formatCredits(value) {
 }
 
 function formatNumber(value) {
-	return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	return Math.floor(value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function formatHyperdriveRating(value) {
