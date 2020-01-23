@@ -34,8 +34,24 @@ class BrowsePage extends React.Component {
 	}
 
 	render() {
-		let ships = this.state.ships.map(ship =>
-			<InventoryListItem ship={ship} />);
+		let ships = this.state.ships;
+
+		// If neither or both new/used are selected we show all.
+		// So only care when only one is selected.
+		if (this.state.showNew != this.state.showUsed)
+			ships = ships.filter(ship => (this.state.showNew && ship.is_new) || (this.state.showUsed && !ship.is_new));
+
+		if (this.state.selectedFilters.length)
+			ships = ships.filter(ship => {
+				for (let filterName of this.state.selectedFilters) {
+					if (ship.starship_class.includes(filterName))
+						return true;
+				}
+				return false;
+			});
+
+		ships = ships.map(ship =>
+			<InventoryListItem ship={ship} key={ship.id} />);
 
 		return (
 			<div className='browse-page'>
