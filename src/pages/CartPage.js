@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Cart from '../models/Cart';
+import PurchaseOrder from '../models/PurchaseOrder';
 import { formatCredits } from '../utils/TextUtils';
 import Button from '../components/Button';
 import OctoButton from '../components/OctoButton';
@@ -22,7 +23,24 @@ class CartPage extends React.Component {
 	}
 
 	checkout = () => {
+		if (!this.props.currentUser) {
+			this.props.history.push('/login');
+			return;
+		}
+		let purchaseItems = this.state.items.map(item => {
+			return { ship_inventory_id: item.ship.id, quantity: item.quantity }
+		});
 
+		PurchaseOrder.purchase(this.props.currentUser, 1, purchaseItems)
+		.then(response => {
+			console.log("Purchase success?:", response);
+			if (response == 200)
+				this.props.history.push('/purchasecomplete');
+			// else?
+		})
+		.catch(error => {
+			console.log("Purchase error:", error);
+		})
 	}
 
 	componentDidMount() {
@@ -30,6 +48,7 @@ class CartPage extends React.Component {
 		//this.setState({ items: Cart.getItems() });
 		//let cartItems = Cart.getItems();
 		this.setState({ items: Cart.getItems() });
+		console.log("USER:", this.props.currentUser);
 	}
 
 	render() {

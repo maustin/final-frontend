@@ -32,13 +32,13 @@ class NavBarBody extends React.Component {
 		if (this.props.currentUser) {
 			authButtons.push(
 				<Button text='Sign Out' onClick={this.props.logout} />,
-				<Button text='Profile' onClick={this.profile} />
+				//<Button text='Profile' onClick={this.profile} />
 			);
 		}
 		else {
 			authButtons.push(
 				<Button text='Sign In' onClick={this.login} />,
-				//<Button text='Register' onClick={this.register} />
+				<Button text='Register' onClick={this.register} />
 			);
 		}
 
