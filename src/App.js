@@ -2,12 +2,15 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Header from './containers/Header';
 import Body from './containers/Body';
+import ColorManager from './utils/ColorManager';
 
 class App extends React.Component {
   state = {
     currentUser: localStorage.getItem('hgss-uid'),
     //cart: localStorage.getItem('hgss-cart'),
   }
+
+  colorManager = new ColorManager();
 
   setCurrentUser = token => {
     // TODO: more token validation?
@@ -28,6 +31,9 @@ class App extends React.Component {
   // componentDidMount() {
   //   document.documentElement.style.setProperty('--base-color', 'red');
   // }
+  componentDidMount() {
+    //this.colorManager.setLight();
+  }
 
   render() {
     console.log("I have uid:", this.state.currentUser);
