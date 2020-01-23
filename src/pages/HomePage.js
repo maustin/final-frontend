@@ -49,7 +49,7 @@ class HomePage extends React.Component {
 				<div className='home-dotd-header'>
 					GAR'S DEAL OF THE DAY
 				</div>
-				<InventoryListItem ship={this.state.dotd} dotd />
+				<InventoryListItem ship={this.state.dotd} style='dotd' />
 			</div>
 		);
 	}

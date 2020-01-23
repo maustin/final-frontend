@@ -4,7 +4,8 @@ import OctoButton from './OctoButton';
 import InventoryListItemDetail from './InventoryListItemDetail';
 
 class InventoryListItem extends React.Component {
-	// Two styles - DOTD and BROWSE
+	// Three possible styles
+	// dotd, browse, cart
 	addToCart = event => {
 
 	};
@@ -13,47 +14,40 @@ class InventoryListItem extends React.Component {
 		if (!this.props.ship)
 			return <div/>;
 
-		/*let ctaButton;
-		let className = ['inventory-line-item inventory-line-item-clickable'];
-		if (this.props.dotd) {
-			ctaButton = <OctoButton smaller text="ADD TO CART" onClick={this.addToCart} />;
-		}
-		else {
-			//ctaButton = <OctoButton text="BROWSE SHIPS" onClick={this.browse} />;
-			className.push('inventory-line-item-clickable');
-		}*/
+		let style = this.props.style;
 
 		let ship = this.props.ship;
 		let image = ship.is_new ? ship.image_new : ship.image_used;
 		let costsDiv;
 		if (ship.price_mod != null && ship.price_mod > 0) {
-			console.log(ship.price, ship.price_mod);
-			costsDiv = [
-				<div className='inventory-line-item-cost-old'>{formatCredits(ship.price)}</div>,
-				<div className='inventory-line-item-cost-current'>{formatCredits(ship.price * ship.price_mod)}</div>
-			];
+			//console.log(ship.price, ship.price_mod);
+			costsDiv = [];
+			if (style != 'cart')
+				costsDiv.push(<div className='inventory-line-item-cost-old'>{formatCredits(ship.price)}</div>);
+
+			costsDiv.push(<div className='inventory-line-item-cost-current'>{formatCredits(ship.price * ship.price_mod)}</div>);
 		}
 		else {
 			// No change
-			costsDiv = <div className='inventory-line-item-cost-current'>{formatCredits(ship.price)}</div>;
+			costsDiv = [<div className='inventory-line-item-cost-current'>{formatCredits(ship.price)}</div>];
 		}
 
+		if (style != 'cart')
+			costsDiv.push(<OctoButton smaller text="ADD TO CART" onClick={this.addToCart} />);
+
 		let className = ['inventory-line-item'];// inventory-line-item-clickable'];
-		if (!this.props.dotd)
+		if (style == 'browse')
 			className.push('inventory-line-item-border');
 
-		/*let lengthOrParsecs;
-		if (ship.is_new)
-			lengthOrParsecs = 'length';
-		else
-			lengthOrParsecs = 'parsecs';*/
+		let costContainerClassName = ['inventory-line-item-cost-container'];
+		if (style == 'cart')
+			costContainerClassName.push('shift-flex-right');
 
 		return (
 			<div className={className.join(' ')} >
 				<img className='inventory-line-item-image' src={image} />
-				<div className='inventory-line-item-cost-container'>
+				<div className={costContainerClassName.join(' ')}>
 					{ costsDiv }
-					<OctoButton smaller text="ADD TO CART" onClick={this.addToCart} />
 				</div>
 				<div className='inventory-line-item-details'>
 					<span className='inventory-line-item-details-header'>{ship.model}</span>

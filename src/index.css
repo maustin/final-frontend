@@ -121,8 +121,9 @@ header {
 }
 
 .inventory-line-item {
-	display: grid;
-	grid-template-columns: 250px 200px auto;
+	/*display: grid;
+	grid-template-columns: 250px 200px auto;*/
+	display: flex;
 	margin-bottom: 10px;
 	padding-bottom: 10px;
 }
@@ -148,6 +149,7 @@ header {
 .inventory-line-item-cost-container {
 	grid-column: 2;
 	/*background: #0000FF;*/
+	width: 200px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -164,6 +166,7 @@ header {
 
 .inventory-line-item-details {
 	grid-column: 3;
+	flex-grow: 1;
 	/*background: #FF0000;*/
 	display: flex;
 	flex-direction: column;
@@ -196,6 +199,10 @@ header {
 
 .inventory-line-item-detail-right {
 
+}
+
+.shift-flex-right {
+	order: 1;
 }
 
 .browse-page {

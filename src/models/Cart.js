@@ -31,4 +31,7 @@ class Cart {
 	}
 }
 
-export default Cart;
+const instance = new Cart();
+Object.freeze(instance);
+
+export default instance;
