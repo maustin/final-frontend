@@ -51,7 +51,7 @@ class BrowsePage extends React.Component {
 			});
 
 		ships = ships.map(ship =>
-			<InventoryListItem ship={ship} key={ship.id} style='cart' />);
+			<InventoryListItem ship={ship} key={ship.id} style='browse' />);
 
 		return (
 			<div className='browse-page'>

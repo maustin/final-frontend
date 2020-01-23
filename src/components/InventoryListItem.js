@@ -1,22 +1,33 @@
 import React from 'react';
 import {formatCredits} from '../utils/TextUtils';
+import InventoryItem from '../models/InventoryItem';
 import OctoButton from './OctoButton';
 import InventoryListItemDetail from './InventoryListItemDetail';
 
 class InventoryListItem extends React.Component {
+	state = {
+		ship: null
+	}
 	// Three possible styles
 	// dotd, browse, cart
 	addToCart = event => {
 
 	};
 
+	componentDidMount() {
+		if (!this.props.ship && this.props.shipId) {
+			InventoryItem.withId(this.props.shipId)
+			.then(response => this.setState({ ship: response }));
+		}
+	}
+
 	render() {
-		if (!this.props.ship)
+		if (!this.props.ship && !this.state.ship)
 			return <div/>;
 
 		let style = this.props.style;
+		let ship = this.props.ship || this.state.ship;
 
-		let ship = this.props.ship;
 		let image = ship.is_new ? ship.image_new : ship.image_used;
 		let costsDiv;
 		if (ship.price_mod != null && ship.price_mod > 0) {
@@ -51,10 +62,10 @@ class InventoryListItem extends React.Component {
 				</div>
 				<div className='inventory-line-item-details'>
 					<span className='inventory-line-item-details-header'>{ship.model}</span>
-					<InventoryListItemDetail ship={this.props.ship} shipKey='starship_class' />
-					<InventoryListItemDetail ship={this.props.ship} shipKey='is_new' />
-					<InventoryListItemDetail ship={this.props.ship} shipKey='parsecs' />
-					<InventoryListItemDetail ship={this.props.ship} shipKey='hyperdrive_rating' />
+					<InventoryListItemDetail ship={ship} shipKey='starship_class' />
+					<InventoryListItemDetail ship={ship} shipKey='is_new' />
+					<InventoryListItemDetail ship={ship} shipKey='parsecs' />
+					<InventoryListItemDetail ship={ship} shipKey='hyperdrive_rating' />
 				</div>
 			</div>
 		);

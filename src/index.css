@@ -143,6 +143,7 @@ header {
 	/*max-height: 200px;*/
 	object-fit: contain;
 	grid-column: 1;
+	margin-right: 5px;
 	/*background: #00FF00;*/
 }
 

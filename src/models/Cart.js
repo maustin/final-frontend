@@ -14,7 +14,7 @@ class Cart {
 	}
 
 	addItem(item) {
-		saveState();
+		this.saveState();
 	}
 
 	getItemQuantity(item) {
@@ -22,12 +22,16 @@ class Cart {
 	}
 
 	setItemQuantity(item) {
-		saveState();
+		this.saveState();
 	}
 
 	clear() {
 		this.items = [];
-		saveState();
+		this.saveState();
+	}
+
+	saveSate() {
+		
 	}
 }
 
