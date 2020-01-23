@@ -7,9 +7,6 @@
 	--gar-saturate: 20%;
 	--gar-hue: 0deg;
 }
-/*filter: brightness(200%) saturate(20%) hue-rotate(0deg);*/
-	/*filter: brightness(200%) saturate(40%) hue-rotate(0deg);*/
-	/*filter: brightness(120%) saturate(100%) hue-rotate(145deg);*/
 
 body {
 	font-family: 'Play', sans-serif;
@@ -44,6 +41,14 @@ header {
 	/*background: rgba(30, 30, 30, 1);*/
 	background: linear-gradient(90deg, rgba(155,11,0,1) 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, rgba(26,165,167,1) 100%);
 	border-bottom: 2px solid var(--base-color);
+	/*padding: 0 10px 0 10px;*/
+}
+
+.nav-hidden-button {
+	cursor: pointer;
+	width: 10px;
+	height: 55px;
+	/*border: 1px solid red;*/
 }
 
 .button-base {

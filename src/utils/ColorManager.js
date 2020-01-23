@@ -1,3 +1,5 @@
+import gsap from "gsap";
+
 const lightScheme = {
 	'--base-color': '#1AA5A7',
 	'--receding-color': '#025051',
@@ -19,17 +21,18 @@ const darkScheme = {
 };
 
 class ColorManager {
-	setLight() {
+	setLight = () => {
 		this.setScheme(lightScheme);
 	}
 
-	setDark() {
+	setDark = () => {
 		this.setScheme(darkScheme);
 	}
 
 	setScheme(scheme) {
 		for (let prop in scheme) {
-			document.documentElement.style.setProperty(prop, scheme[prop]);
+			gsap.to("html", 1, { duration: 1, [prop]: scheme[prop]});
+			//document.documentElement.style.setProperty(prop, scheme[prop]);
 		}
 	}
 }

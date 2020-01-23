@@ -41,7 +41,9 @@ class App extends React.Component {
       <div className='app'>
         <Header
           currentUser={this.state.currentUser}
-          logout={this.logout} />
+          logout={this.logout} 
+          setLight={this.colorManager.setLight}
+          setDark={this.colorManager.setDark} />
         <Body
           currentUser={this.state.currentUser}
           setCurrentUser={this.setCurrentUser} />
