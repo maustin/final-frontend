@@ -25,7 +25,6 @@ class HomePage extends React.Component {
 	componentDidMount() {
 		if (!this.state.dotd) {
 			InventoryItem.withPromoId(PROMO_DOTD)
-			//InventoryItem.withId(3)
 			.then(response => {
 				console.log("DOTD:", response);
 				this.setState({ dotd: response });

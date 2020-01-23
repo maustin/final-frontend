@@ -23,6 +23,10 @@ class NavBarBody extends React.Component {
 		this.props.history.push('/');
 	}
 
+	browse = () => {
+		this.props.history.push('/browse');
+	}
+
 	render() {
 		let authButtons = [];
 		if (this.props.currentUser) {

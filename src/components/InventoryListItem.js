@@ -38,7 +38,7 @@ class InventoryListItem extends React.Component {
 			costsDiv = <div className='inventory-line-item-cost-current'>{formatCredits(ship.price)}</div>;
 		}
 
-		let className = ['inventory-line-item inventory-line-item-clickable'];
+		let className = ['inventory-line-item'];// inventory-line-item-clickable'];
 		if (!this.props.dotd)
 			className.push('inventory-line-item-border');
 
