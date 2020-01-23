@@ -34,8 +34,10 @@ class CartPage extends React.Component {
 		PurchaseOrder.purchase(this.props.currentUser, 1, purchaseItems)
 		.then(response => {
 			console.log("Purchase success?:", response);
-			if (response == 200)
+			if (response == 200) {
+				Cart.clear();
 				this.props.history.push('/purchasecomplete');
+			}
 			// else?
 		})
 		.catch(error => {

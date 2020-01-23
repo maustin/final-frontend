@@ -5,6 +5,7 @@ import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import CartPage from '../pages/CartPage';
 import BrowsePage from '../pages/BrowsePage';
+import PurchaseCompletePage from '../pages/PurchaseCompletePage';
 
 class Body extends React.Component {
 	render() {
@@ -17,6 +18,7 @@ class Body extends React.Component {
 						path='/cart'
 						render={props => <CartPage {...props} currentUser={this.props.currentUser}/> }/>
 					<Route path='/browse' component={ BrowsePage } />
+					<Route path='/purchasecomplete' component={ PurchaseCompletePage } />
 					<Route
 						path='/login'
 						render={props => <LoginPage {...props} setCurrentUser={this.props.setCurrentUser}/> }/>

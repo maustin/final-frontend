@@ -190,6 +190,31 @@ header {
 	cursor: pointer;
 }
 
+.complete-page {
+	margin: 20px auto;
+	width: 80%;
+	max-width: 720px;
+	display: flex;
+	border-left: 2px solid var(--base-color);
+	border-bottom: 2px solid var(--base-color);
+}
+
+.complete-text-container h2 {
+	color: var(--text-header-color);
+	/*font-size: 36px;*/
+}
+
+.complete-text-container h6 {
+	color: var(--receding-color);
+	font-size: 16px;
+}
+
+.complete-logo-gar {
+	/*width: 380px;
+	height: 409px;*/
+	filter: brightness(var(--gar-brightness)) saturate(var(--gar-saturate)) hue-rotate(var(--gar-hue));
+}
+
 .home-page {
 	margin: 20px auto;
 	width: 80%;
