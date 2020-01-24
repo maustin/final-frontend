@@ -16,8 +16,7 @@ class InventoryListItem extends React.Component {
 
 	addToCart = event => {
 		let ship = this.props.ship || this.state.ship;
-		//console.log(this.state.ship);
-		//this.props.addToCart(ship, 1);
+
 		Cart.addItem(ship, 1);
 		this.props.history.push('/cart');
 	};

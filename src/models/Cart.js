@@ -68,7 +68,10 @@ class Cart {
 	}
 
 	clear = () => {
-		this.items = [];
+		for (let key in this.items) {
+			delete this.items[key];
+		}
+		//this.items = [];
 		this.saveState();
 	}
 

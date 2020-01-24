@@ -1,11 +1,11 @@
 :root {
-	--base-color: #D9FFFF;
-	--receding-color: #D9FFFF;
-	--text-color: #D9FFFF;
-	--text-header-color: #D9FFFF;
+	--base-color: #9c9a6a;
+	--receding-color: #706e2d;
+	--text-color: #fffed1;
+	--text-header-color: #feffe6;
 	--gar-brightness: 200%;
 	--gar-saturate: 20%;
-	--gar-hue: 0deg;
+	--gar-hue: -120deg;
 }
 /*filter: brightness(200%) saturate(20%) hue-rotate(0deg);*/
 	/*filter: brightness(200%) saturate(40%) hue-rotate(0deg);*/
@@ -22,6 +22,7 @@ body {
   height: 1vh;
   width: 100%;
   /*max-width: 900px;*/
+  /*background-image: url(/thingy.svg);*/
 }
 
 .app {
