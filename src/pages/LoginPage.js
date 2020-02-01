@@ -55,8 +55,8 @@ class LoginPage extends React.Component {
 		}
 
 		return (
-			<div style={pageStyle}>
-				<h2>Sign In</h2>
+			<div className='register-page' style={pageStyle}>
+				<h2>SIGN IN</h2>
 
 				<h5>Email</h5>
 				<input
@@ -74,6 +74,7 @@ class LoginPage extends React.Component {
 					className='text-input'
 					value={this.state.password}
 					onChange={this.handleChange} />
+				<br/>
 
 				<Button
 					text='Submit'

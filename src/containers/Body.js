@@ -5,15 +5,20 @@ import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import CartPage from '../pages/CartPage';
 import BrowsePage from '../pages/BrowsePage';
+import PurchaseCompletePage from '../pages/PurchaseCompletePage';
 
 class Body extends React.Component {
 	render() {
+		//<Route path='/cart' component={ CartPage } />
 		return (
 			<div className='body'>
 				<Switch>
 					<Route exact path='/' component={ HomePage } />
-					<Route path='/cart' component={ CartPage } />
+					<Route
+						path='/cart'
+						render={props => <CartPage {...props} currentUser={this.props.currentUser}/> }/>
 					<Route path='/browse' component={ BrowsePage } />
+					<Route path='/purchasecomplete' component={ PurchaseCompletePage } />
 					<Route
 						path='/login'
 						render={props => <LoginPage {...props} setCurrentUser={this.props.setCurrentUser}/> }/>

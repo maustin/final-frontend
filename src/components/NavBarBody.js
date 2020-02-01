@@ -32,25 +32,25 @@ class NavBarBody extends React.Component {
 		if (this.props.currentUser) {
 			authButtons.push(
 				<Button text='Sign Out' onClick={this.props.logout} />,
-				<Button text='Profile' onClick={this.profile} />
+				//<Button text='Profile' onClick={this.profile} />
 			);
 		}
 		else {
 			authButtons.push(
 				<Button text='Sign In' onClick={this.login} />,
-				//<Button text='Register' onClick={this.register} />
+				<Button text='Register' onClick={this.register} />
 			);
 		}
 
 		return (
 			<div className='navbar-body'>
-				<div className='nav-hidden-button' onClick={this.props.setDark} />
+				<div className='hidden-button' onClick={this.props.setDark} />
 				<Button text='Home' onClick={this.home} />
 				<Button text='Browse' onClick={this.browse} />
 				<div style={{'flexGrow': 1}} />
 				{authButtons}
 				<Button text='Cart' onClick={this.cart} />
-				<div className='nav-hidden-button' onClick={this.props.setLight} />
+				<div className='hidden-button' onClick={this.props.setLight} />
 			</div>
 		);
 	}

@@ -2,8 +2,12 @@ import React from 'react';
 
 class Button extends React.Component {
 	onClick = event => {
-		if (this.props.onClick)
-			this.props.onClick(event);
+		if (this.props.onClick) {
+			if (this.props.clickParam)
+				this.props.onClick(this.props.clickParam);
+			else
+				this.props.onClick(event);
+		}
 	}
 
 	render() {

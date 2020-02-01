@@ -70,17 +70,8 @@ class RegisterPage extends React.Component {
 		}
 
 		return (
-			<div style={pageStyle}>
-				<h2>Register</h2>
-
-				<h5>Username</h5>
-				<h6>This is your public-facing identity</h6>
-				<input
-					type='text'
-					name='username'
-					className='text-input'
-					value={this.state.username}
-					onChange={this.handleChange} />
+			<div className='register-page' style={pageStyle}>
+				<h2>REGISTER</h2>
 
 				<h5>Email</h5>
 				<input
@@ -116,6 +107,7 @@ class RegisterPage extends React.Component {
 					value={this.state.password2}
 					onChange={this.handleChange} />
 
+				<br/>
 				<Button
 					text='Submit'
 					onClick={this.onSubmitClick} />

@@ -1,4 +1,4 @@
-import gsap from "gsap";
+import gsap from 'gsap';
 
 const lightScheme = {
 	'--base-color': '#1AA5A7',
@@ -30,8 +30,9 @@ class ColorManager {
 	}
 
 	setScheme(scheme) {
+		console.log('set scheme');
 		for (let prop in scheme) {
-			gsap.to("html", 1, { duration: 1, [prop]: scheme[prop]});
+			gsap.to("html", { duration: 1, [prop]: scheme[prop] });
 			//document.documentElement.style.setProperty(prop, scheme[prop]);
 		}
 	}
